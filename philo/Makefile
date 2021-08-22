@@ -1,8 +1,32 @@
 NAME := philo
 
 CC := gcc
-CFLAGS := -Wall -Wextre -Werror -lpthread
+CFLAGS := -Wall -Wextra -Werror
+LIBS := -pthread
+INCLUDE := -I includes/
 
 SRCDIR := srcs/
-OBJ_DIR := objs/
-SRCNAME := main.c
+SRCNAME := main.c \
+
+SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
+OBJS := $(SRCS:.c=.o)
+
+RM := rm -f
+
+all: $(NAME)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(LIBS) $(INCLUDE) $(OBJS) -o $@
+
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean re
+
+.PHONY: all clean fclean re
