@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/26 18:57:41 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/08/27 00:10:42 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/08/27 00:15:06 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	t_info	info;
+	if ('0' <= c && c <= '9')
+		return (1);
+	return (0);
+}
 
-	if (parser(ac, av, &info) != 0)
-	{
-		write(2, "error\n", 6);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned char *str1;
+	unsigned char *str2;
+
+	if (!s1 || !s2)
 		return (-1);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (n-- > 0)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		if (*str1 == '\0')
+			return (0);
+		str1++;
+		str2++;
 	}
 	return (0);
 }

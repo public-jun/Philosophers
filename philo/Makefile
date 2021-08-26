@@ -7,6 +7,8 @@ INCLUDE := -I includes/
 
 SRCDIR := srcs/
 SRCNAME := main.c \
+			parse.c \
+
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)
@@ -16,7 +18,7 @@ RM := rm -f
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LIBS) $(INCLUDE) $(OBJS) -o $@
