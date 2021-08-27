@@ -6,16 +6,17 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 16:10:16 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:28:50 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
 /*
 ** memset
 */
-#include <string.h>
+# include <string.h>
 
 /*
 ** printf

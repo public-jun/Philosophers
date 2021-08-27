@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 23:14:29 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 13:55:09 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:29:50 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_int_overflow(int sign, const char *str)
 {
 	int	digit;
 
-	digit =  0;
+	digit = 0;
 	while (ft_isdigit(str[digit]))
 		digit++;
 	if (digit > 10)
