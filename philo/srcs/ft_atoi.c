@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 23:14:29 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 00:15:21 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/08/27 13:55:09 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	*ft_atoi_ex(const char *str)
 			sign *= -1;
 		i++;
 	}
-	if (check_int_overflow(sign, str, + i) != 0)
+	if (check_int_overflow(sign, str + i) != 0)
 		return (NULL);
 	if (!str[i])
 		return (NULL);

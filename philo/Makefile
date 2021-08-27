@@ -8,12 +8,14 @@ INCLUDE := -I includes/
 SRCDIR := srcs/
 SRCNAME := main.c \
 			parse.c \
+			ft_atoi.c \
+			utils.c \
 
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)
 
-RM := rm -f
+RM := rm -rf
 
 all: $(NAME)
 
@@ -27,8 +29,14 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME).dSYM
 
 re: fclean all
+
+test:
+		$(CC) -g $(CFLAGS) $(SRCS) $(LIBS) $(INCLUDE) -o $(NAME)
+
+valgrind: test
+	valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=666 ./$(NAME) '-30'
 
 .PHONY: all clean fclean re

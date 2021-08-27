@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 14:22:39 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/08/27 15:17:48 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+#ifndef DEFINE_H
+# define DEFINE_H
 
-int main(int ac, char **av)
-{
-	t_info	info;
+# define PHILOMIN 1
+# define PHILOMAX 300
+# define MSECMIN 1
+# define MSECMAX 999
+# define MUSTEATMIN 1
+# define MUSTEATMAX 1000
 
-	if (parser(ac, av, &info) != 0)
-	{
-		write(2, "error\n", 6);
-		return (-1);
-	}
-	return (0);
-}
+#endif

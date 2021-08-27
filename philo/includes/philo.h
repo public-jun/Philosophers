@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/26 18:46:49 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:10:16 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,23 @@
 # include <pthread.h>
 
 # include <struct.h>
+# include <stdbool.h>
 
 /*
 ** parse.c
 */
-int	parser(int ac, char **av, t_info *info);
+int		parser(int ac, char **av, t_info *info);
+
+/*
+** ft_atoi.c
+*/
+int		*ft_atoi_ex(const char *str);
+
+/*
+** utils.c
+*/
+int		ft_isdigit(int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	free_set(void **dst, void *src);
 
 #endif
