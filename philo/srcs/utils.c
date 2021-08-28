@@ -6,11 +6,23 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 00:10:42 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 16:32:26 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/08/27 23:26:37 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+size_t	ft_strlen(const char *src)
+{
+	size_t	i;
+
+	i = 0;
+	if (!src)
+		return (0);
+	while (src[i])
+		i++;
+	return (i);
+}
 
 int	ft_isdigit(int c)
 {
@@ -21,8 +33,8 @@ int	ft_isdigit(int c)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	str1;
-	unsigned char	str2;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	if (!s1 || !s2)
 		return (-1);

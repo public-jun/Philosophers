@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   init_thread_and_mutex.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 23:24:34 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/08/27 23:24:35 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-#define STRUCT_H
+#include <philo.h>
 
-#include <stdbool.h>
-
-typedef struct s_config
+int init_thread_and_mutex(t_config *config)
 {
-	int num_philo_and_fork;
-	int time_to_die;
-	int time_to_eat;
-	int time_to_sleep;
-	int num_times_must_eat;
-	bool flag_must_eat;
-} t_config;
-
-#endif
+	// thread を作る
+}
