@@ -9,6 +9,7 @@ SRCDIR := srcs/
 SRCNAME := main.c \
 			parse.c \
 			ft_atoi.c \
+			print_err.c \
 			utils.c \
 
 
