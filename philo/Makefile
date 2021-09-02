@@ -7,8 +7,9 @@ INCLUDE := -I includes/
 
 SRCDIR := srcs/
 SRCNAME := main.c \
-			parse.c \
 			ft_atoi.c \
+			init_thread_and_mutex.c \
+			parse.c \
 			print_err.c \
 			utils.c \
 
