@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 21:26:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/02 22:17:06 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int main(int ac, char **av)
 	if (init_thread_and_mutex(&trunk) != 0)
 		return (print_err_message("error init\n"));
 	printf("done\n");
+	end_process(&trunk);
 	return (0);
 }

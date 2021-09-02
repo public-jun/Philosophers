@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 21:35:51 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/02 22:01:41 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ int init_thread_and_mutex(t_trunk *trunk)
 	{
 		printf("philo[%d]\t|\t%d\t|\n", i + 1, trunk->philo[i].eat_count);
 	}
-	printf()
 	return (0);
 }
