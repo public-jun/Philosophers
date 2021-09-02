@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_thread_and_mutex.c                            :+:      :+:    :+:   */
+/*   init_philo_and_fork.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 22:01:41 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/02 22:31:17 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_fork(t_trunk *trunk, int num_forks)
 	return (0);
 }
 
-int init_thread_and_mutex(t_trunk *trunk)
+int init_philo_and_fork(t_trunk *trunk)
 {
 	int num_philo_and_fork;
 
