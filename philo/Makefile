@@ -7,6 +7,7 @@ INCLUDE := -I includes/
 
 SRCDIR := srcs/
 SRCNAME := main.c \
+			end.c \
 			ft_atoi.c \
 			init_thread_and_mutex.c \
 			parse.c \
@@ -39,6 +40,6 @@ test:
 		$(CC) -g $(CFLAGS) $(SRCS) $(LIBS) $(INCLUDE) -o $(NAME)
 
 valgrind: test
-	valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=666 ./$(NAME) '-30'
+	valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=666 ./$(NAME) 3 300 100 100
 
 .PHONY: all clean fclean re

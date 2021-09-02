@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 21:23:30 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/02 22:18:39 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@
 ** parse.c
 */
 int parser(int ac, char **av, t_config *config);
+
+/*
+** end.c
+*/
+void	end_process(t_trunk *trunk);
 
 /*
 ** ft_atoi.c
