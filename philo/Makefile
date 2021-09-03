@@ -11,7 +11,9 @@ SRCNAME := main.c \
 			ft_atoi.c \
 			init_philo_and_fork.c \
 			parse.c \
+			philo.c \
 			print_err.c \
+			thread_process.c \
 			utils.c \
 
 

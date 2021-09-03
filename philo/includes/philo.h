@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 11:16:12 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:55:20 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@
 #include <struct.h>
 #include <stdbool.h>
 
-/*
-** parse.c
-*/
-int parser(int ac, char **av, t_config *config);
 
 /*
 ** end.c
@@ -67,6 +63,16 @@ int *ft_atoi_ex(const char *str);
 int	init_philo_and_fork(t_trunk *trunk);
 
 /*
+** parse.c
+*/
+int parser(int ac, char **av, t_config *config);
+
+/*
+** philo.c
+*/
+void	*philosopher(void *v);
+
+/*
 ** utils.c
 */
 size_t ft_strlen(const char *src);
@@ -77,7 +83,7 @@ void free_set(void **dst, void *src);
 /*
 ** start.c
 */
-int	start_thread(t_trunk *trunk);
+int	thread_process(t_trunk *trunk, int num_philo);
 
 /*
 ** print_err.c

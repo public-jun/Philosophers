@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 11:15:11 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/09/03 18:56:48 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/09/03 18:57:45 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	start_thread(t_trunk *trunk)
+void	*monitor(void *v)
 {
-	
-	return (0);
+	t_trunk *trunk;
+
+	trunk = (t_trunk *)v;
 }

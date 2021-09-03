@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 12:04:36 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:44:44 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	int				own_num;
+	int				id;
 	struct timeval	eat_start;
 	int				eat_count;
 	t_fork			*left;
