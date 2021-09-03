@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 20:47:31 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:36:57 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	thread_process(t_trunk *trunk, int num_philo)
 			return (-1);
 		tmp_philo = &(trunk->philo[++i]);
 	}
-	pthread_mutex_destroy(&(trunk->share.mutex_print));
-	pthread_mutex_destroy(&(trunk->share.mutex_stop));
+	pthread_mutex_destroy(&g_print);
+	pthread_mutex_destroy(&g_stop);
 	i = 0;
 	tmp_fork = &trunk->fork[i];
 	while (i < num_philo)

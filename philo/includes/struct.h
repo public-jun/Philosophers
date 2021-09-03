@@ -6,14 +6,18 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 16:44:44 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:45:17 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
-#include <stdbool.h>
+# include <stdbool.h>
+
+extern bool				g_is_stop;
+extern pthread_mutex_t	g_print;
+extern pthread_mutex_t	g_stop;
 
 typedef struct s_config
 {
@@ -23,20 +27,13 @@ typedef struct s_config
 	int		time_to_sleep;
 	int		num_times_must_eat;
 	bool	flag_must_eat;
-} t_config;
-
-typedef struct s_share
-{
-	bool			is_stop;
-	pthread_mutex_t	mutex_print;
-	pthread_mutex_t	mutex_stop;
-} t_share;
+}	t_config;
 
 typedef struct s_fork
 {
 	bool			is_use;
 	pthread_mutex_t	mutex_fork;
-} t_fork;
+}	t_fork;
 
 typedef struct s_philo
 {
@@ -47,14 +44,13 @@ typedef struct s_philo
 	t_fork			*right;
 	pthread_t		thread;
 	pthread_t		death_monitor;
-} t_philo;
+}	t_philo;
 
 typedef struct s_trunk
 {
 	t_config	config;
-	t_share		share;
 	t_fork		*fork;
 	t_philo		*philo;
-} t_trunk;
+}	t_trunk;
 
 #endif
