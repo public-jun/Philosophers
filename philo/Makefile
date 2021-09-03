@@ -10,6 +10,7 @@ SRCNAME := main.c \
 			end.c \
 			ft_atoi.c \
 			init_philo_and_fork.c \
+			monitor.c \
 			parse.c \
 			philo.c \
 			print_err.c \
