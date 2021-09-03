@@ -6,16 +6,16 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:03:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 22:21:44 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:37:26 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	destroy_share(t_share *share)
+void	destroy_share(void)
 {
-	pthread_mutex_destroy(&(share->mutex_print));
-	pthread_mutex_destroy(&(share->mutex_stop));
+	pthread_mutex_destroy(&g_print);
+	pthread_mutex_destroy(&g_stop);
 }
 
 void	free_philo(t_trunk *trunk)
@@ -42,7 +42,7 @@ void	free_fork(t_trunk *trunk)
 
 void	end_process(t_trunk *trunk)
 {
-	destroy_share(&(trunk->share));
+	destroy_share();
 	free_philo(trunk);
 	free_fork(trunk);
 }

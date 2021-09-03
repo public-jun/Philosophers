@@ -6,20 +6,19 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 16:56:32 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:38:06 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int init_share(t_share *share)
+int init_share(void)
 {
-	share->is_stop = false;
-	if (pthread_mutex_init(&(share->mutex_print), NULL) != 0)
+	if (pthread_mutex_init(&g_print, NULL) != 0)
 		return (-1);
-	if (pthread_mutex_init(&(share->mutex_stop), NULL) != 0)
+	if (pthread_mutex_init(&g_stop, NULL) != 0)
 	{
-		pthread_mutex_destroy(&(share->mutex_print));
+		pthread_mutex_destroy(&g_print);
 		return (-1);
 	}
 	return (0);
@@ -91,7 +90,7 @@ int init_philo_and_fork(t_trunk *trunk)
 
 	// thread を作る
 	num_philo_and_fork = trunk->config.num_philo_and_fork;
-	if (init_share(&(trunk->share)) < 0)
+	if (init_share() < 0)
 		return (-1);
 	if (init_philo(trunk, num_philo_and_fork) < 0)
 		return (-1);
