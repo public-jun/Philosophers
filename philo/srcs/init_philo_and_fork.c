@@ -6,16 +6,16 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 12:14:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:56:32 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	init_share(t_share *share)
+int init_share(t_share *share)
 {
 	share->is_stop = false;
-	if (pthread_mutex_init(&(share->mutex_print), NULL) !=0)
+	if (pthread_mutex_init(&(share->mutex_print), NULL) != 0)
 		return (-1);
 	if (pthread_mutex_init(&(share->mutex_stop), NULL) != 0)
 	{
@@ -25,7 +25,7 @@ int	init_share(t_share *share)
 	return (0);
 }
 
-int	init_philo(t_trunk *trunk, int num_philos)
+int init_philo(t_trunk *trunk, int num_philos)
 {
 	int i;
 
@@ -35,7 +35,7 @@ int	init_philo(t_trunk *trunk, int num_philos)
 	i = 0;
 	while (i < num_philos)
 	{
-		trunk->philo[i].own_num = i + 1;
+		trunk->philo[i].id = i + 1;
 		trunk->philo[i].eat_count = 0;
 		trunk->philo[i].left = NULL;
 		trunk->philo[i].right = NULL;
@@ -44,10 +44,10 @@ int	init_philo(t_trunk *trunk, int num_philos)
 	return (0);
 }
 
-int	init_fork(t_trunk *trunk, int num_forks)
+int init_fork(t_trunk *trunk, int num_forks)
 {
-	int		i;
-	t_fork	*tmp_fork;
+	int i;
+	t_fork *tmp_fork;
 
 	trunk->fork = (t_fork *)malloc(sizeof(t_fork) * num_forks);
 	if (!trunk->fork)
@@ -67,9 +67,9 @@ int	init_fork(t_trunk *trunk, int num_forks)
 	return (0);
 }
 
-void	link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
+void link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
 {
-	int		i;
+	int i;
 	t_philo *tmp_philo;
 
 	i = 0;
@@ -77,10 +77,10 @@ void	link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
 	while (i < num_philo)
 	{
 		if (i == 0)
-			tmp_philo->left->mutex_fork = fork[num_philo - 1];
+			tmp_philo->left = &fork[num_philo - 1];
 		else
-			tmp_philo->left->mutex_fork = fork[i - 1];
-		tmp_philo->right->mutex_fork = fork[i];
+			tmp_philo->left = &fork[i - 1];
+		tmp_philo->right = &fork[i];
 		tmp_philo = &(trunk->philo[++i]);
 	}
 }
@@ -98,10 +98,10 @@ int init_philo_and_fork(t_trunk *trunk)
 	if (init_fork(trunk, num_philo_and_fork) < 0)
 		return (-1);
 	link_to_fork(trunk, num_philo_and_fork, trunk->fork);
-	printf("philo[num]\t| eat_count | left | right\n");
-	for (int i = 0; i < num_philo_and_fork; i++)
-	{
-		printf("philo[%d]\t|\t%d\t|\n", i + 1, trunk->philo[i].eat_count);
-	}
+	// printf("philo[num]\t| eat_count | left | right\n");
+	// for (int i = 0; i < num_philo_and_fork; i++)
+	// {
+	// 	printf("philo[%d]\t|\t%d\t|\n", i + 1, trunk->philo[i].eat_count);
+	// }
 	return (0);
 }
