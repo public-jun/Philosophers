@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 16:56:03 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 20:47:31 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	thread_process(t_trunk *trunk, int num_philo)
 		if (ret != 0)
 			return (-1);
 		// monitor thread作成
-		// ret = pthread_create(&(tmp_philo->death_monitor), NULL, monitor, (void *)trunk);
-		// if (ret != 0)
-		// 	return (-1);
+		ret = pthread_create(&(tmp_philo->death_monitor), NULL, monitor, (void *)trunk);
+		if (ret != 0)
+			return (-1);
 		tmp_philo = &(trunk->philo[++i]);
 	}
 	i = 0;
@@ -40,9 +40,9 @@ int	thread_process(t_trunk *trunk, int num_philo)
 		ret = pthread_join(tmp_philo->thread, NULL);
 		if (ret != 0)
 			return (-1);
-		// ret = pthread_join(tmp_philo->death_monitor, NULL);
-		// if (ret != 0)
-		// 	return (-1);
+		ret = pthread_join(tmp_philo->death_monitor, NULL);
+		if (ret != 0)
+			return (-1);
 		tmp_philo = &(trunk->philo[++i]);
 	}
 	pthread_mutex_destroy(&(trunk->share.mutex_print));
