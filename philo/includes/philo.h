@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 22:30:32 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:16:12 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ size_t ft_strlen(const char *src);
 int ft_isdigit(int c);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 void free_set(void **dst, void *src);
+
+/*
+** start.c
+*/
+int	start_thread(t_trunk *trunk);
 
 /*
 ** print_err.c
