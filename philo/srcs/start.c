@@ -6,7 +6,14 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/02 22:31:59 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:15:11 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <philo.h>
+
+int	start_thread(t_trunk *trunk)
+{
+	
+	return (0);
+}
