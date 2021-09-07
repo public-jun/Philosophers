@@ -4,7 +4,7 @@
 
 //msで表示が目的
 
-int	what_time();
+int	what_time()
 {
 	struct timeval tv;
 

@@ -6,28 +6,28 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:03:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 23:37:26 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:17:55 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	destroy_share(void)
+void destroy_share(void)
 {
 	pthread_mutex_destroy(&g_print);
-	pthread_mutex_destroy(&g_stop);
+	pthread_mutex_destroy(&g_dead);
 }
 
-void	free_philo(t_trunk *trunk)
+void free_philo(t_trunk *trunk)
 {
 	free(trunk->philo);
 	trunk->philo = NULL;
 }
 
-void	free_fork(t_trunk *trunk)
+void free_fork(t_trunk *trunk)
 {
-	int		i;
-	t_fork	*tmp_fork;
+	int i;
+	t_fork *tmp_fork;
 
 	i = 0;
 	tmp_fork = &(trunk->fork[i]);
@@ -40,7 +40,7 @@ void	free_fork(t_trunk *trunk)
 	trunk->fork = NULL;
 }
 
-void	end_process(t_trunk *trunk)
+void end_process(t_trunk *trunk)
 {
 	destroy_share();
 	free_philo(trunk);

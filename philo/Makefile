@@ -7,6 +7,7 @@ INCLUDE := -I includes/
 
 SRCDIR := srcs/
 SRCNAME := main.c \
+			eat.c \
 			end.c \
 			ft_atoi.c \
 			init_philo_and_fork.c \
@@ -14,7 +15,8 @@ SRCNAME := main.c \
 			parse.c \
 			philo.c \
 			print_err.c \
-			thread_process.c \
+			thread.c \
+			time.c \
 			utils.c \
 
 

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 12:11:57 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 22:33:28 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@
 # include <stdbool.h>
 
 /*
+** eat.c
+*/
+int			eat(t_philo *philo);
+
+/*
 ** end.c
 */
 void		end_process(t_trunk *trunk);
@@ -85,9 +90,15 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		free_set(void **dst, void *src);
 
 /*
-** start.c
+** thread.c
 */
 int			thread_process(t_trunk *trunk, int num_philo);
+
+/*
+** time.c
+*/
+int			what_ms_time(void);
+int			waiting_time(int standard, int work);
 
 /*
 ** print_err.c

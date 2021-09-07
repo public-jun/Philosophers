@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_process.c                                   :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 12:16:01 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:34:42 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	thread_process(t_trunk *trunk, int num_philo)
+int thread_process(t_trunk *trunk, int num_philo)
 {
-	int		ret;
-	int		i;
-	t_philo	*tmp_philo;
-	t_fork	*tmp_fork;
+	int ret;
+	int i;
+	t_philo *tmp_philo;
+	t_fork *tmp_fork;
 
 	i = 0;
 	tmp_philo = &(trunk->philo[i]);
@@ -46,7 +46,7 @@ int	thread_process(t_trunk *trunk, int num_philo)
 		tmp_philo = &(trunk->philo[++i]);
 	}
 	pthread_mutex_destroy(&g_print);
-	pthread_mutex_destroy(&g_stop);
+	pthread_mutex_destroy(&g_dead);
 	i = 0;
 	tmp_fork = &trunk->fork[i];
 	while (i < num_philo)

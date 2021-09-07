@@ -6,18 +6,18 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 12:19:05 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:51:27 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-# define STRUCT_H
+#define STRUCT_H
 
-# include <stdbool.h>
+#include <stdbool.h>
 
-extern bool				g_is_stop;
+extern bool				g_is_dead;
 extern pthread_mutex_t	g_print;
-extern pthread_mutex_t	g_stop;
+extern pthread_mutex_t	g_dead;
 
 typedef struct s_config
 {
