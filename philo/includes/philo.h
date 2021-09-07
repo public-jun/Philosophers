@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 23:43:35 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:11:57 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			*ft_atoi_ex(const char *str);
 /*
 ** init_thread_and_mutex
 */
-int			init_philo_and_fork(t_trunk *trunk);
+int			init_philo_and_fork(t_trunk *trunk, t_config config);
 
 /*
 ** monitor.c

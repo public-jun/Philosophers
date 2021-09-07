@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:31:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 23:36:57 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:16:01 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	thread_process(t_trunk *trunk, int num_philo)
 	while (i < num_philo)
 	{
 		//philo thread作成
-		ret = pthread_create(&(tmp_philo->thread), NULL, philosopher, (void *)trunk);
+		ret = pthread_create(&(tmp_philo->thread), NULL, philosopher, (void *)tmp_philo);
 		if (ret != 0)
 			return (-1);
 		// monitor thread作成
-		ret = pthread_create(&(tmp_philo->death_monitor), NULL, monitor, (void *)trunk);
+		ret = pthread_create(&(tmp_philo->death_monitor), NULL, monitor, (void *)tmp_philo);
 		if (ret != 0)
 			return (-1);
 		tmp_philo = &(trunk->philo[++i]);

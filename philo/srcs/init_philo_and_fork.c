@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 23:38:06 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:12:53 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int init_share(void)
 	return (0);
 }
 
-int init_philo(t_trunk *trunk, int num_philos)
+int init_philo(t_trunk *trunk, int num_philos, t_config config)
 {
 	int i;
 
@@ -36,6 +36,7 @@ int init_philo(t_trunk *trunk, int num_philos)
 	{
 		trunk->philo[i].id = i + 1;
 		trunk->philo[i].eat_count = 0;
+		trunk->philo[i].config = config;
 		trunk->philo[i].left = NULL;
 		trunk->philo[i].right = NULL;
 		i++;
@@ -84,7 +85,7 @@ void link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
 	}
 }
 
-int init_philo_and_fork(t_trunk *trunk)
+int init_philo_and_fork(t_trunk *trunk, t_config config)
 {
 	int num_philo_and_fork;
 
@@ -92,7 +93,7 @@ int init_philo_and_fork(t_trunk *trunk)
 	num_philo_and_fork = trunk->config.num_philo_and_fork;
 	if (init_share() < 0)
 		return (-1);
-	if (init_philo(trunk, num_philo_and_fork) < 0)
+	if (init_philo(trunk, num_philo_and_fork, config) < 0)
 		return (-1);
 	if (init_fork(trunk, num_philo_and_fork) < 0)
 		return (-1);
