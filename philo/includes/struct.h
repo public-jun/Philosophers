@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/03 23:45:17 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:19:05 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo
 	int				id;
 	struct timeval	eat_start;
 	int				eat_count;
+	t_config		config;
 	t_fork			*left;
 	t_fork			*right;
 	pthread_t		thread;
