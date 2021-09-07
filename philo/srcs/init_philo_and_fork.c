@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 12:12:53 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:18:00 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int init_share(void)
 {
 	if (pthread_mutex_init(&g_print, NULL) != 0)
 		return (-1);
-	if (pthread_mutex_init(&g_stop, NULL) != 0)
+	if (pthread_mutex_init(&g_dead, NULL) != 0)
 	{
 		pthread_mutex_destroy(&g_print);
 		return (-1);
