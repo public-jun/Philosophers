@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 22:47:28 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/08 23:21:32 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,10 @@ int			waiting_time(long standard, int work);
 ** print_err.c
 */
 int			print_err_message(char *mess);
+
+/*
+** sleep.c
+*/
+int			sleeping(t_philo *philo);
 
 #endif
