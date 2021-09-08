@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:59:07 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 23:07:59 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/08 22:59:04 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 int	eating(t_philo *philo)
 {
-	struct timeval	tv;
-	int				standard_time;
-
 	if (g_is_dead == false)
 	{
-		gettimeofday(&tv, NULL);
-		philo->eat_start = tv;
+		philo->eat_start = what_time();
 		pthread_mutex_lock(&g_print);
-		printf("%d %d  is eating\n", tv.tv_usec / 1000, philo->id);
+		printf("%ld %d is eating\n", philo->eat_start, philo->id);
 		pthread_mutex_unlock(&g_print);
-		standard_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	}
 	else
 		return (-1);
-	while (!waiting_time(standard_time, philo->config.time_to_eat))
+	while (!waiting_time(philo->eat_start, philo->config.time_to_eat))
 	{
 		if (g_is_dead == true)
 			return (-1);
@@ -49,7 +44,7 @@ int	take_a_fork(t_fork *hand, t_philo *philo)
 		if (g_is_dead == false)
 		{
 			pthread_mutex_lock(&g_print);
-			printf("%d %d has taken a fork\n", what_ms_time(), philo->id);
+			printf("%ld %d has taken a fork\n", what_time(), philo->id);
 			pthread_mutex_unlock(&g_print);
 		}
 		pthread_mutex_unlock(&(hand->mutex_fork));
