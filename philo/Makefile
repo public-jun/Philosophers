@@ -15,6 +15,7 @@ SRCNAME := main.c \
 			parse.c \
 			philo.c \
 			print_err.c \
+			sleep.c \
 			thread.c \
 			time.c \
 			utils.c \

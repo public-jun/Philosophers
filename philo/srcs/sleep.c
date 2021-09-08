@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/03 15:59:19 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 23:24:23 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/09/08 23:10:28 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/09/08 23:22:29 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-//出力してみる
-void	*philosopher(void *v)
+int	sleeping(t_philo *philo)
 {
-	t_philo *philo;
+	long	start_time;
 
-	philo = (t_philo *)v;
-	if ((philo->id  - 1 ) % 2)
-		usleep(200);
-	while (1)
+	start_time = what_time();
+	pthread_mutex_lock(&g_print);
+	if (g_is_dead == false)
+		printf("%ld %d is sleeping\n", start_time, philo->id);
+	pthread_mutex_unlock(&g_print);
+	if (g_is_dead == true)
+		return (-1);
+	while (!waiting_time(start_time, philo->config.time_to_sleep))
 	{
-		//eat
-		if (eat(philo) != 0)
-			break;
-		if (sleeping(philo) != 0)
-			break;
-		//think
-		pthread_mutex_lock(&g_print);
-		if (g_is_dead == false)
-			printf("%ld %d is thinking\n", what_time(), philo->id);
-		pthread_mutex_unlock(&g_print);
+		if (g_is_dead == true)
+			return (-1);
+		usleep(200);
 	}
-	return (NULL);
+	return (0);
 }
