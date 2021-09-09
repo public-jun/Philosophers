@@ -6,15 +6,15 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 23:10:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 23:22:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:44:15 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	sleeping(t_philo *philo)
+int sleeping(t_philo *philo)
 {
-	long	start_time;
+	long start_time;
 
 	start_time = what_time();
 	pthread_mutex_lock(&g_print);

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 16:18:05 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:05:12 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int main(int ac, char **av)
 		return (print_err_message("error init\n"));
 	if (thread_process(&trunk, config.num_philo_and_fork) != 0)
 		return (print_err_message("error init\n"));
-	printf("done\n");
 	end_process(&trunk);
 	return (0);
 }

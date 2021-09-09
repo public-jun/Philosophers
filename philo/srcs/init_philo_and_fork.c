@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 16:18:00 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:04:29 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int init_share(void)
 
 int init_philo(t_trunk *trunk, int num_philos, t_config config)
 {
-	int i;
+	int		i;
+	long	start;
 
 	trunk->philo = (t_philo *)malloc(sizeof(t_philo) * num_philos);
 	if (!trunk->philo)
 		return (-1);
 	i = 0;
+	start = what_time();
 	while (i < num_philos)
 	{
 		trunk->philo[i].id = i + 1;
+		trunk->philo[i].eat_start = start;
 		trunk->philo[i].eat_count = 0;
 		trunk->philo[i].config = config;
 		trunk->philo[i].left = NULL;
