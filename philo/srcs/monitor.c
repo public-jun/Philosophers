@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:56:48 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 22:35:00 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/09 23:56:59 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 void	*monitor(void *v)
 {
-	t_philo *philo;
+	t_philo	*philo;
+	long	now;
 
 	philo = (t_philo *)v;
-	// pthread_mutex_lock(&g_print);
-	// printf("monitor is now\n");
-	// pthread_mutex_unlock(&g_print);
+	while (g_is_dead == false)
+	{
+		now = what_time();
+		// eat_start の初期値は無視する
+		if (now - philo->eat_start >= philo->config.time_to_die)
+		{
+			pthread_mutex_lock(&g_print);
+			if(g_is_dead == false)
+				printf("%ld %d died\n", now, philo->id);
+			pthread_mutex_unlock(&g_print);
+			g_is_dead = true;
+		}
+	}
 	return (NULL);
 }
