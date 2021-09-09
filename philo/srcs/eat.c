@@ -6,13 +6,13 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:59:07 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 23:23:33 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:44:13 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	eating(t_philo *philo)
+int eating(t_philo *philo)
 {
 	if (g_is_dead == false)
 	{
@@ -35,7 +35,7 @@ int	eating(t_philo *philo)
 	return (0);
 }
 
-int	take_a_fork(t_fork *hand, t_philo *philo)
+int take_a_fork(t_fork *hand, t_philo *philo)
 {
 	if (hand->is_use == false)
 	{
@@ -53,7 +53,7 @@ int	take_a_fork(t_fork *hand, t_philo *philo)
 	return (0);
 }
 
-int	wait_fork(t_fork *hand, t_philo *philo)
+int wait_fork(t_fork *hand, t_philo *philo)
 {
 	while (!take_a_fork(hand, philo))
 	{
@@ -64,7 +64,7 @@ int	wait_fork(t_fork *hand, t_philo *philo)
 	return (0);
 }
 
-int	eat(t_philo *philo)
+int eat(t_philo *philo)
 {
 	//take left fork
 	if (wait_fork(philo->left, philo) < 0)

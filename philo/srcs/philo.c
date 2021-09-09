@@ -6,19 +6,19 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 15:59:19 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 23:24:23 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:44:14 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
 //出力してみる
-void	*philosopher(void *v)
+void *philosopher(void *v)
 {
 	t_philo *philo;
 
 	philo = (t_philo *)v;
-	if ((philo->id  - 1 ) % 2)
+	if ((philo->id - 1) % 2)
 		usleep(200);
 	while (1)
 	{
