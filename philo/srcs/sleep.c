@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 23:10:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 00:44:15 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:31:43 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int sleeping(t_philo *philo)
 	{
 		if (g_is_dead == true)
 			return (-1);
-		usleep(200);
+		usleep(50);
 	}
 	return (0);
 }
