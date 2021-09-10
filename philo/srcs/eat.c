@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:59:07 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 00:44:13 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:34:10 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int eating(t_philo *philo)
 	{
 		if (g_is_dead == true)
 			return (-1);
-		usleep(200);
+		usleep(50);
 	}
 	philo->eat_count++;
 	philo->right->is_use = false;
@@ -59,7 +59,7 @@ int wait_fork(t_fork *hand, t_philo *philo)
 	{
 		if (g_is_dead == true)
 			return (-1);
-		usleep(200);
+		usleep(50);
 	}
 	return (0);
 }
