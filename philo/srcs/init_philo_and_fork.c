@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 00:04:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:59:21 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int init_fork(t_trunk *trunk, int num_forks)
 	tmp_fork = &(trunk->fork[i]);
 	while (i < num_forks)
 	{
-		tmp_fork->is_use = false;
 		if (pthread_mutex_init(&(tmp_fork->mutex_fork), NULL) != 0)
 		{
 			//エラー処理 free (trunk->philo, trunk->fork)

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 22:45:51 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:59:09 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_config
 
 typedef struct s_fork
 {
-	bool			is_use;
 	pthread_mutex_t	mutex_fork;
 }	t_fork;
 
