@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/07 15:18:11 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:18:30 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define PHILOMIN 1
 # define PHILOMAX 300
 # define MSECMIN 1
-# define MSECMAX 999
+# define MSECMAX 10000
 # define MUSTEATMIN 1
 # define MUSTEATMAX 1000
 # define RIGHT 1
