@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 15:59:19 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/11 22:41:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/09/10 23:22:55 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void *philosopher(void *v)
 		return (NULL);
 	if (pthread_detach(philo->death_monitor))
 		return (NULL);
-	// if ((philo->id - 1) % 2)
-	// 	usleep(200);
+	if ((philo->id - 1) % 2)
+		usleep(200);
 	while (1)
 	{
 		//eat
