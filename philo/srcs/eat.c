@@ -26,7 +26,7 @@ int	eating(t_philo *philo)
 	{
 		if (g_is_dead == true)
 			break;
-		usleep(50);
+		usleep(1000);
 	}
 	pthread_mutex_unlock(&(philo->right->mutex_fork));
 	pthread_mutex_unlock(&(philo->left->mutex_fork));
