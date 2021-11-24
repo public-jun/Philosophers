@@ -13,16 +13,16 @@
 #include <philo.h>
 #include <define.h>
 
-int set_philo_data(int *item, char *src)
+t_result set_philo_data(int *item, char *src)
 {
 	int *tmp;
 
 	tmp = ft_atoi_ex(src);
 	if (!tmp)
-		return (-1);
+		return (FAILURE);
 	*item = *tmp;
 	free_set((void **)&tmp, NULL);
-	return (0);
+	return (SUCCESS);
 }
 
 bool is_in_range(int value, int min, int max)
@@ -44,24 +44,24 @@ int check_valid_philo_value(t_config *config)
 	return (0);
 }
 
-int parser(int ac, char **av, t_config *config)
+t_result	parser(int ac, char **av, t_config *config)
 {
 	config->flag_must_eat = false;
 	if (ac < 5 || 6 < ac)
-		return (-1);
+		return (FAILURE);
 	else if (ac == 6)
 		config->flag_must_eat = true;
-	if (set_philo_data(&(config->num_philo_and_fork), av[1]) == -1)
-		return (-1);
-	if (set_philo_data(&(config->time_to_die), av[2]) == -1)
-		return (-1);
-	if (set_philo_data(&(config->time_to_eat), av[3]) == -1)
-		return (-1);
-	if (set_philo_data(&(config->time_to_sleep), av[4]) == -1)
-		return (-1);
-	if (config->flag_must_eat == true && set_philo_data(&(config->num_times_must_eat), av[5]) == -1)
-		return (-1);
-	if (check_valid_philo_value(config) == -1)
-		return (-1);
-	return (0);
+	if (!set_philo_data(&(config->num_philo_and_fork), av[1]))
+		return (FAILURE);
+	if (!set_philo_data(&(config->time_to_die), av[2]))
+		return (FAILURE);
+	if (!set_philo_data(&(config->time_to_eat), av[3]))
+		return (FAILURE);
+	if (!set_philo_data(&(config->time_to_sleep), av[4]))
+		return (FAILURE);
+	if (config->flag_must_eat == true && !set_philo_data(&(config->num_times_must_eat), av[5]))
+		return (FAILURE);
+	if (!check_valid_philo_value(config))
+		return (FAILURE);
+	return (SUCCESS);
 }
