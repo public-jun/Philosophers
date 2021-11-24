@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:30:01 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 21:59:09 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:27:14 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 extern bool				g_is_dead;
 extern pthread_mutex_t	g_print;
 extern pthread_mutex_t	g_dead;
+
+typedef enum e_result
+{
+	SUCCESS,
+	FAILURE
+} t_result;
 
 typedef struct s_config
 {
