@@ -32,16 +32,16 @@ bool is_in_range(int value, int min, int max)
 	return (true);
 }
 
-int check_valid_philo_value(t_config *config)
+t_result check_valid_philo_value(t_config *config)
 {
 	if (is_in_range(config->num_philo_and_fork, PHILOMIN, PHILOMAX) == false)
-		return (-1);
+		return (FAILURE);
 	if ((is_in_range(config->time_to_die, MSECMIN, MSECMAX) == false) || (is_in_range(config->time_to_eat, MSECMIN, MSECMAX) == false) || (is_in_range(config->time_to_sleep, MSECMIN, MSECMAX) == false))
-		return (-1);
+		return (FAILURE);
 	if ((config->flag_must_eat == true) && (is_in_range(config->num_times_must_eat,
 														MUSTEATMIN, MUSTEATMAX) == false))
-		return (-1);
-	return (0);
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 t_result	parser(int ac, char **av, t_config *config)
