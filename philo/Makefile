@@ -23,19 +23,22 @@ SRCNAME := main.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)
+DEPS := $(SRCS:.c=.d)
 
 RM := rm -rf
 
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -MMD -MP -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LIBS) $(INCLUDE) $(OBJS) -o $@
 
+-include $(DEPS)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
 	$(RM) $(NAME) $(NAME).dSYM
@@ -43,9 +46,9 @@ fclean: clean
 re: fclean all
 
 test:
-		$(CC) -g $(CFLAGS) $(SRCS) $(LIBS) $(INCLUDE) -o $(NAME)
+	$(CC) -g $(CFLAGS) $(SRCS) $(LIBS) $(INCLUDE) -o $(NAME)
 
 valgrind: test
 	valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=666 ./$(NAME) 3 300 100 100
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test valgrind
