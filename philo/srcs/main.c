@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/24 18:43:50 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/25 23:41:22 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int ac, char **av)
 	if (parser(ac, av, &config) == FAILURE)
 		return (print_err_message("Invalid argment\n"));
 	trunk.config = config;
-	if (init_philo_and_fork(&trunk, config) != 0)
+	if (init_philo_and_fork(&trunk, config) == FAILURE)
 		return (print_err_message("error init\n"));
 	if (thread_process(&trunk, config.num_philo_and_fork) != 0)
 		return (print_err_message("error init\n"));

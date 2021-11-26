@@ -51,17 +51,17 @@ t_result	parser(int ac, char **av, t_config *config)
 		return (FAILURE);
 	else if (ac == 6)
 		config->flag_must_eat = true;
-	if (!set_philo_data(&(config->num_philo_and_fork), av[1]))
+	if (set_philo_data(&(config->num_philo_and_fork), av[1]))
 		return (FAILURE);
-	if (!set_philo_data(&(config->time_to_die), av[2]))
+	if (set_philo_data(&(config->time_to_die), av[2]))
 		return (FAILURE);
-	if (!set_philo_data(&(config->time_to_eat), av[3]))
+	if (set_philo_data(&(config->time_to_eat), av[3]))
 		return (FAILURE);
-	if (!set_philo_data(&(config->time_to_sleep), av[4]))
+	if (set_philo_data(&(config->time_to_sleep), av[4]))
 		return (FAILURE);
-	if (config->flag_must_eat == true && !set_philo_data(&(config->num_times_must_eat), av[5]))
+	if (config->flag_must_eat == true && set_philo_data(&(config->num_times_must_eat), av[5]))
 		return (FAILURE);
-	if (!check_valid_philo_value(config))
+	if (check_valid_philo_value(config))
 		return (FAILURE);
 	return (SUCCESS);
 }
