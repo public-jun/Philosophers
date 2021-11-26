@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:56:48 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 23:50:38 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/26 22:17:39 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	*monitor(void *v)
 				printf("%ld %d died\n", now, philo->id);
 			g_is_dead = true;
 			pthread_mutex_unlock(&g_print);
+			usleep(500);
 		}
 	}
 	return (NULL);
