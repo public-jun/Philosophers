@@ -6,32 +6,32 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:26:25 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 21:59:21 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/25 23:42:46 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int init_share(void)
+t_result init_share(void)
 {
 	if (pthread_mutex_init(&g_print, NULL) != 0)
-		return (-1);
+		return (FAILURE);
 	if (pthread_mutex_init(&g_dead, NULL) != 0)
 	{
 		pthread_mutex_destroy(&g_print);
-		return (-1);
+		return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
-int init_philo(t_trunk *trunk, int num_philos, t_config config)
+t_result	init_philo(t_trunk *trunk, int num_philos, t_config config)
 {
 	int		i;
 	long	start;
 
 	trunk->philo = (t_philo *)malloc(sizeof(t_philo) * num_philos);
 	if (!trunk->philo)
-		return (-1);
+		return (FAILURE);
 	i = 0;
 	start = what_time();
 	while (i < num_philos)
@@ -44,17 +44,17 @@ int init_philo(t_trunk *trunk, int num_philos, t_config config)
 		trunk->philo[i].right = NULL;
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
-int init_fork(t_trunk *trunk, int num_forks)
+t_result	init_fork(t_trunk *trunk, int num_forks)
 {
 	int i;
 	t_fork *tmp_fork;
 
 	trunk->fork = (t_fork *)malloc(sizeof(t_fork) * num_forks);
 	if (!trunk->fork)
-		return (-1);
+		return (FAILURE);
 	i = 0;
 	tmp_fork = &(trunk->fork[i]);
 	while (i < num_forks)
@@ -62,11 +62,11 @@ int init_fork(t_trunk *trunk, int num_forks)
 		if (pthread_mutex_init(&(tmp_fork->mutex_fork), NULL) != 0)
 		{
 			//エラー処理 free (trunk->philo, trunk->fork)
-			return (-1);
+			return (FAILURE);
 		}
 		tmp_fork = &(trunk->fork[++i]);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 void link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
@@ -87,23 +87,23 @@ void link_to_fork(t_trunk *trunk, int num_philo, t_fork *fork)
 	}
 }
 
-int init_philo_and_fork(t_trunk *trunk, t_config config)
+t_result	init_philo_and_fork(t_trunk *trunk, t_config config)
 {
 	int num_philo_and_fork;
 
 	// thread を作る
 	num_philo_and_fork = trunk->config.num_philo_and_fork;
-	if (init_share() < 0)
-		return (-1);
-	if (init_philo(trunk, num_philo_and_fork, config) < 0)
-		return (-1);
-	if (init_fork(trunk, num_philo_and_fork) < 0)
-		return (-1);
+	if (init_share() == FAILURE)
+		return (FAILURE);
+	if (init_philo(trunk, num_philo_and_fork, config) == FAILURE)
+		return (FAILURE);
+	if (init_fork(trunk, num_philo_and_fork) == FAILURE)
+		return (FAILURE);
 	link_to_fork(trunk, num_philo_and_fork, trunk->fork);
 	// printf("philo[num]\t| eat_count | left | right\n");
 	// for (int i = 0; i < num_philo_and_fork; i++)
 	// {
 	// 	printf("philo[%d]\t|\t%d\t|\n", i + 1, trunk->philo[i].eat_count);
 	// }
-	return (0);
+	return (SUCCESS);
 }
