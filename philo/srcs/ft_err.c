@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err.c                                        :+:      :+:    :+:   */
+/*   ft_err.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 22:05:11 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 22:10:00 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/11/27 16:56:41 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/11/27 17:11:00 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	print_err_message(char *mess)
+int	ft_err(const char *msg)
 {
-	printf("%s\n", mess);
-	return (-1);
+	printf("%s\n", msg);
+	return (1);
 }
