@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.c                                            :+:      :+:    :+:   */
+/*   philo_init_fork.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/08 23:10:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/10 21:55:29 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/11/27 23:00:59 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/11/27 23:31:13 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int sleeping(t_philo *philo)
+t_result	philo_init_fork(t_philo *philo)
 {
-	long start_time;
+	int	total_philo;
 
-	start_time = what_time();
-	pthread_mutex_lock(&g_print);
-	if (g_is_dead == false)
-		printf("%ld %d is sleeping\n", start_time, philo->id);
-	pthread_mutex_unlock(&g_print);
-	if (g_is_dead == true)
-		return (-1);
-	while (!waiting_time(start_time, philo->config.time_to_sleep))
-	{
-		if (g_is_dead == true)
-			return (-1);
-		usleep(50);
-	}
-	return (0);
+	total_philo = philo->num_philo_and_fork;
+	philo->fork = \
+		(pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * total_philo);
+	if (!philo->fork)
+		return (ft_err(CANTALLOCATE));
+
+	return (SUCCESS);
 }

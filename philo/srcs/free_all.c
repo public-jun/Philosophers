@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err.c                                        :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 22:05:11 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 22:10:00 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/11/27 23:03:51 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/11/27 23:31:41 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	print_err_message(char *mess)
+int	free_all(t_philo *philo)
 {
-	printf("%s\n", mess);
-	return (-1);
+	free_set((void **)&philo->fork, NULL);
+	free_set((void **)&philo->men, NULL);
+	return(1);
 }
