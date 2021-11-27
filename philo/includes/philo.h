@@ -6,45 +6,64 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:49:03 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/09/08 23:21:32 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/25 23:36:25 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-/*
-** memset
-*/
 # include <string.h>
-
-/*
-** printf
-*/
 # include <stdio.h>
-
-/*
-** malloc free
-*/
 # include <stdlib.h>
-
-/*
-** write usleep
-*/
 # include <unistd.h>
-
-/*
-** gettimeofday
-*/
 # include <sys/time.h>
-
-/*
-** pthread_*
-*/
 # include <pthread.h>
-
-# include <struct.h>
 # include <stdbool.h>
+
+extern bool				g_is_dead;
+extern pthread_mutex_t	g_print;
+extern pthread_mutex_t	g_dead;
+
+typedef enum e_result
+{
+	SUCCESS,
+	FAILURE
+} t_result;
+
+typedef struct s_config
+{
+	int		num_philo_and_fork;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		num_times_must_eat;
+	bool	flag_must_eat;
+}	t_config;
+
+typedef struct s_fork
+{
+	pthread_mutex_t	mutex_fork;
+}	t_fork;
+
+typedef struct s_philo
+{
+	int				id;
+	long			eat_start;
+	int				eat_count;
+	t_config		config;
+	t_fork			*left;
+	t_fork			*right;
+	pthread_t		thread;
+	pthread_t		death_monitor;
+}	t_philo;
+
+typedef struct s_trunk
+{
+	t_config	config;
+	t_fork		*fork;
+	t_philo		*philo;
+}	t_trunk;
 
 /*
 ** eat.c
@@ -62,9 +81,9 @@ void		end_process(t_trunk *trunk);
 int			*ft_atoi_ex(const char *str);
 
 /*
-** init_thread_and_mutex
+** init_philo_and_fork.c
 */
-int			init_philo_and_fork(t_trunk *trunk, t_config config);
+t_result	init_philo_and_fork(t_trunk *trunk, t_config config);
 
 /*
 ** monitor.c
@@ -74,7 +93,7 @@ void		*monitor(void *v);
 /*
 ** parse.c
 */
-int			parser(int ac, char **av, t_config *config);
+t_result	parser(int ac, char **av, t_config *config);
 
 /*
 ** philo.c
