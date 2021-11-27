@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:11:54 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 23:30:54 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,18 @@ int			*ft_atoi(const char *str);
 /*
 ** ft_err.c
 */
-int			ft_err(t_philo *philo, const char *msg);
+t_result	ft_err(const char *msg);
+// int			ft_err_and_free(t_philo *philo, const char *msg);
 
 /*
 ** philo_init_man.c
 */
 t_result	philo_init_man(t_philo *philo);
+
+/*
+** philo_init_man.c
+*/
+t_result	philo_init_fork(t_philo *philo);
 
 /*
 ** utils.c

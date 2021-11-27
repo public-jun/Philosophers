@@ -12,6 +12,7 @@ SRCNAME := main.c \
 			ft_err.c \
 			init_args.c \
 			philo_init_man.c \
+			philo_init_fork.c \
 			utils.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))

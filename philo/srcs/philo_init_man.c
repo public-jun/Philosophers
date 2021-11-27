@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:12:42 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 23:28:31 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_result	philo_init_man(t_philo *philo)
 
 	philo->men = (t_man *)malloc(sizeof(t_man) * philo->num_philo_and_fork);
 	if (!philo->men)
-		return (FAILURE);
+		return (ft_err(CANTALLOCATE));
 	init_man(&man);
 	man.num_philo_and_fork = philo->num_philo_and_fork;
 	man.time_to_die = philo->time_to_die;
