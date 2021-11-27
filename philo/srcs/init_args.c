@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 16:54:33 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 17:48:30 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:03:21 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static t_result	set_philo_para(int *item, char *arg)
 	if (!tmp)
 		return (FAILURE);
 	*item = *tmp;
-	free_set((void**)&tmp, NULL);
+	free_set((void **)&tmp, NULL);
 	return (SUCCESS);
 }
 
-t_result init_args(int ac, char **av, t_philo *philo)
+t_result	init_args(int ac, char **av, t_philo *philo)
 {
 	if (ac != 5 && ac != 6)
 		return (FAILURE);

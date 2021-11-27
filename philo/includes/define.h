@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 17:10:52 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:01:59 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define MUSTEATMAX 1000
 # define RIGHT 1
 # define LEFT 2
-
-#define INVALIDARGS "Invalid argment"
+# define INVALIDARGS "Invalid argment"
 
 #endif
