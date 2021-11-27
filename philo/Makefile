@@ -9,6 +9,8 @@ SRCDIR := srcs/
 SRCNAME := main.c \
 			ft_err.c \
 			init_args.c \
+			utils.c \
+			ft_atoi.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)

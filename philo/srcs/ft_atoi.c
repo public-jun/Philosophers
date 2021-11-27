@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 23:14:29 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/08/27 16:29:50 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:42:58 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	*make_int_value_in_heap(const char *str, int i, int sign)
 	return (res);
 }
 
-int	*ft_atoi_ex(const char *str)
+int	*ft_atoi(const char *str)
 {
 	int	*res;
 	int	sign;
