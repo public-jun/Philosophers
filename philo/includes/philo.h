@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 18:02:52 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/27 23:11:54 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,73 @@ typedef enum e_result
 	FAILURE
 }	t_result;
 
+typedef struct s_man
+{
+	// Args info PART
+	int				num_philo_and_fork;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				num_of_times_each_philo_must_eat;
+	bool			is_must_eat;
+
+	// each Man status
+	int				id;
+	pthread_mutex_t	*left;
+	pthread_mutex_t	*right;
+	int				eat_count;
+	pthread_t		thread;
+
+	// Share para PART
+	pthread_mutex_t	*died;
+	bool			*is_fin;
+	// philo must eat PART
+	pthread_mutex_t	*eat;
+	int				*least_ate_count;
+}	t_man;
+
 typedef struct s_philo
 {
-	int		num_philo_and_fork;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		num_of_times_each_philo_must_eat;
-	bool	is_must_eat;
+	// Args info PART
+	int				num_philo_and_fork;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				num_of_times_each_philo_must_eat;
+	bool			is_must_eat;
+
+	// philo must eat PART
+	pthread_mutex_t	eat;
+	int				least_ate_count;
+
+	// Shared para PART
+	t_man			*men;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	died;
+	bool			is_fin;
 }	t_philo;
 
-int			ft_err(const char *msg);
 t_result	init_args(int ac, char **av, t_philo *philo);
+
+/*
+** ft_all.c
+*/
+int			free_all(t_philo *philo);
 
 /*
 ** ft_atoi.c
 */
 int			*ft_atoi(const char *str);
+
+/*
+** ft_err.c
+*/
+int			ft_err(t_philo *philo, const char *msg);
+
+/*
+** philo_init_man.c
+*/
+t_result	philo_init_man(t_philo *philo);
 
 /*
 ** utils.c

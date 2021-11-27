@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 16:56:41 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:08:39 by jnakahod         ###   ########.fr       */
+/*   Created: 2021/11/27 23:03:51 by jnakahod          #+#    #+#             */
+/*   Updated: 2021/11/27 23:11:28 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	ft_err(t_philo *philo, const char *msg)
+int	free_all(t_philo *philo)
 {
-	printf("%s\n", msg);
-	if (philo)
-	{
-		free_all(philo);
-	}
-	return (1);
+	free_set((void **)&philo->men, NULL);
+	return(1);
 }
