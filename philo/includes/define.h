@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:39:40 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 22:21:25 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define INVALIDARGS "Invalid argment"
 # define CANTALLOCATE "Cannot malloc"
 # define ERRINITMUTEX "Cant init mutex"
+# define TAKEFORK "has taken a fork"
 
 #endif

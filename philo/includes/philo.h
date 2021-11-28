@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 20:23:44 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 22:20:34 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ t_result	philo_init_fork(t_philo *philo);
 ** utils.c
 */
 void		philo_lunch(t_philo *philo);
+
+/*
+** time.c
+*/
+long long	what_time(void);
 
 /*
 ** utils.c
