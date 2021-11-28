@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:30:54 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:16:53 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_man
 	bool			*is_fin;
 	// philo must eat PART
 	pthread_mutex_t	*eat;
-	int				*least_ate_count;
+	int				*least_philo_ate_count;
 }	t_man;
 
 typedef struct s_philo
@@ -65,7 +65,7 @@ typedef struct s_philo
 
 	// philo must eat PART
 	pthread_mutex_t	eat;
-	int				least_ate_count;
+	int				least_philo_ate_count;
 
 	// Shared para PART
 	t_man			*men;
@@ -93,13 +93,19 @@ t_result	ft_err(const char *msg);
 // int			ft_err_and_free(t_philo *philo, const char *msg);
 
 /*
+** philo_init_eat.c
+*/
+t_result	philo_init_eat(t_philo *philo);
+
+/*
 ** philo_init_man.c
 */
 t_result	philo_init_man(t_philo *philo);
 
 /*
-** philo_init_man.c
+** philo_init_fork.c
 */
+t_result	err_philo_init_fork(t_philo *philo, int last_index, char *msg);
 t_result	philo_init_fork(t_philo *philo);
 
 /*
