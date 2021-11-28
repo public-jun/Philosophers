@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 16:42:53 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:14:19 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	if (philo_init_eat(&philo))
 		return (EXIT_FAILURE);
-	destory_(&philo);
+	destroy_philo(&philo);
 	free_all(&philo);
 	return (0);
 }
