@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 23:28:31 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:48:16 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_man(t_man *man)
 	man->eat_count = 0;
 	man->died = NULL;
 	man->eat = NULL;
-	man->least_ate_count = NULL;
+	man->least_philo_ate_count = NULL;
 	man->is_fin = NULL;
 }
 
