@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:15:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 16:42:13 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:19:01 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_result	philo_init_eat(t_philo *philo)
 	{
 		philo->men[i].eat = &philo->eat;
 		philo->men[i].least_philo_ate_count = &philo->least_philo_ate_count;
+		++i;
 	}
 	return (SUCCESS);
 }

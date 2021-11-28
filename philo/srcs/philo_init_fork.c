@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 23:00:59 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 14:11:52 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:14:49 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_result	philo_init_fork(t_philo *philo)
 	i = -1;
 	while (++i < total_philo)
 	{
-		philo->men[i].right = philo->fork[i];
-		philo->men[i].left = philo->fork[(i - 1 + total_philo) % total_philo];
+		philo->men[i].right = &philo->fork[i];
+		philo->men[i].left = &philo->fork[(i - 1 + total_philo) % total_philo];
 		philo->men[i].died = &philo->died;
 	}
 	return (SUCCESS);

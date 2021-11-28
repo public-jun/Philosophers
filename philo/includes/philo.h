@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 14:16:53 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/28 20:23:44 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ typedef struct s_philo
 t_result	init_args(int ac, char **av, t_philo *philo);
 
 /*
-** ft_all.c
+** free_all.c
 */
+void		destroy_philo(t_philo *philo);
 int			free_all(t_philo *philo);
 
 /*
@@ -107,6 +108,11 @@ t_result	philo_init_man(t_philo *philo);
 */
 t_result	err_philo_init_fork(t_philo *philo, int last_index, char *msg);
 t_result	philo_init_fork(t_philo *philo);
+
+/*
+** utils.c
+*/
+void		philo_lunch(t_philo *philo);
 
 /*
 ** utils.c
