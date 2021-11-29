@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 16:00:23 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:59:37 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,45 +30,34 @@ typedef enum e_result
 
 typedef struct s_man
 {
-	// Args info PART
 	int				num_philo_and_fork;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				num_of_times_each_philo_must_eat;
 	bool			is_must_eat;
-
-	// each Man status
 	int				id;
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
 	int				eat_count;
 	long long		time_to_start_eat;
 	pthread_t		thread;
-
-	// Share para PART
 	pthread_mutex_t	*died;
 	bool			*is_alive;
-	// philo must eat PART
 	pthread_mutex_t	*eat;
 	int				*least_philo_ate_count;
 }	t_man;
 
 typedef struct s_philo
 {
-	// Args info PART
 	int				num_philo_and_fork;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				num_of_times_each_philo_must_eat;
 	bool			is_must_eat;
-
-	// philo must eat PART
 	pthread_mutex_t	eat;
 	int				least_philo_ate_count;
-
-	// Shared para PART
 	t_man			*men;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	died;
@@ -111,16 +100,23 @@ t_result	err_philo_init_fork(t_philo *philo, int last_index, char *msg);
 t_result	philo_init_fork(t_philo *philo);
 
 /*
-** utils.c
+** philo_lunch.c
 */
-void		philo_die(t_man *man);
 void		philo_lunch(t_philo *philo);
+
+/*
+** philo_utils.c
+*/
+void		philo_print_status(t_man *man, const char *msg);
+void		only_one_philo(t_man *man);
+void		philo_wait(t_man *man, long long standard, int wait_time);
+void		philo_die(t_man *man);
 
 /*
 ** time.c
 */
 long long	what_time(void);
-int			waiting_time(t_man *man, long long standard, int work);
+int			waiting(t_man *man, long long standard, int work);
 
 /*
 ** utils.c
