@@ -15,6 +15,7 @@ SRCNAME := main.c \
 			philo_init_man.c \
 			philo_init_fork.c \
 			philo_lunch.c \
+			time.c \
 			utils.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
