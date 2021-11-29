@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 10:45:35 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:08:29 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,19 @@
 void	philo_print_status(t_man *man, const char *msg)
 {
 	pthread_mutex_lock(man->died);
-	if (!*man->is_fin)
+	if (*man->is_alive)
 		printf("%lld %d %s\n", what_time(), man->id, msg);
+	pthread_mutex_unlock(man->died);
+}
+
+void	philo_die(t_man *man)
+{
+	pthread_mutex_lock(man->died);
+	if (*man->is_alive)
+	{
+		*man->is_alive = false;
+		printf("%lld %d %s\n", what_time(), man->id, DIE);
+	}
 	pthread_mutex_unlock(man->died);
 }
 
@@ -42,8 +53,17 @@ void	philo_take_fork(t_man *man)
 
 void	philo_eat_spaghetti(t_man *man)
 {
-	philo_print_status(man, EAT);
-	usleep(1000000);
+	pthread_mutex_lock(man->died);
+	man->time_to_start_eat = what_time();
+	if (*man->is_alive)
+		printf("%lld %d %s\n", man->time_to_start_eat, man->id, EAT);
+	pthread_mutex_unlock(man->died);
+	while (*man->is_alive)
+	{
+		// check die
+		if (waiting_time(man, man->time_to_start_eat, man->time_to_eat))
+			break;
+	}
 	pthread_mutex_unlock(man->left);
 	pthread_mutex_unlock(man->right);
 }

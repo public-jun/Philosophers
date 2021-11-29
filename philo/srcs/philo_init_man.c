@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 11:01:57 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:00:56 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_man(t_man *man)
 	man->died = NULL;
 	man->eat = NULL;
 	man->least_philo_ate_count = NULL;
-	man->is_fin = NULL;
+	man->is_alive = NULL;
 }
 
 t_result	philo_init_man(t_philo *philo)
@@ -52,7 +52,7 @@ t_result	philo_init_man(t_philo *philo)
 	{
 		man.id = i + 1;
 		philo->men[i] = man;
-		philo->men[i].is_fin = &philo->is_fin;
+		philo->men[i].is_alive = &philo->is_alive;
 		++i;
 	}
 	return (SUCCESS);

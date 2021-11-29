@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 11:01:11 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:00:23 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_man
 
 	// Share para PART
 	pthread_mutex_t	*died;
-	bool			*is_fin;
+	bool			*is_alive;
 	// philo must eat PART
 	pthread_mutex_t	*eat;
 	int				*least_philo_ate_count;
@@ -72,7 +72,7 @@ typedef struct s_philo
 	t_man			*men;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	died;
-	bool			is_fin;
+	bool			is_alive;
 }	t_philo;
 
 t_result	init_args(int ac, char **av, t_philo *philo);
@@ -113,12 +113,14 @@ t_result	philo_init_fork(t_philo *philo);
 /*
 ** utils.c
 */
+void		philo_die(t_man *man);
 void		philo_lunch(t_philo *philo);
 
 /*
 ** time.c
 */
 long long	what_time(void);
+int			waiting_time(t_man *man, long long standard, int work);
 
 /*
 ** utils.c

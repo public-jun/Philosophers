@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 20:17:32 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:00:32 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	init_philo(t_philo *philo)
 	philo->least_philo_ate_count = 0;
 	philo->men = NULL;
 	philo->fork = NULL;
-	philo->is_fin = false;
+	philo->is_alive = true;
 }
 
 int	main(int ac, char **av)
