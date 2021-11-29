@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 22:20:34 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:01:11 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_man
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
 	int				eat_count;
+	long long		time_to_start_eat;
 	pthread_t		thread;
 
 	// Share para PART
