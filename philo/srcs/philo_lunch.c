@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 18:24:56 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:03:18 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,27 @@ void *lunch(void *p)
 	return (NULL);
 }
 
+void	only_one_philo(t_man *man)
+{
+	philo_print_status(man, TAKEFORK);
+	man->time_to_start_eat = what_time();
+	while (*man->is_alive)
+	{
+		if (waiting_time(man, man->time_to_start_eat, man->time_to_die))
+			break;
+	}
+}
+
 void	philo_lunch(t_philo *philo)
 {
 	int	i;
 
 	i = -1;
+	if (philo->num_philo_and_fork == 1)
+	{
+		only_one_philo(&philo->men[0]);
+		return ;
+	}
 	while (++i < philo->num_philo_and_fork)
 	{
 		pthread_create(&philo->men[i].thread, NULL, lunch, &philo->men[i]);
