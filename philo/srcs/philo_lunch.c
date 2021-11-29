@@ -6,30 +6,11 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 19:03:18 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 20:00:33 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
-
-void	philo_print_status(t_man *man, const char *msg)
-{
-	pthread_mutex_lock(man->died);
-	if (*man->is_alive)
-		printf("%lld %d %s\n", what_time(), man->id, msg);
-	pthread_mutex_unlock(man->died);
-}
-
-void	philo_die(t_man *man)
-{
-	pthread_mutex_lock(man->died);
-	if (*man->is_alive)
-	{
-		*man->is_alive = false;
-		printf("%lld %d %s\n", what_time(), man->id, DIE);
-	}
-	pthread_mutex_unlock(man->died);
-}
 
 void	philo_take_fork(t_man *man)
 {
@@ -58,12 +39,7 @@ void	philo_eat_spaghetti(t_man *man)
 	if (*man->is_alive)
 		printf("%lld %d %s\n", man->time_to_start_eat, man->id, EAT);
 	pthread_mutex_unlock(man->died);
-	while (*man->is_alive)
-	{
-		if (waiting_time(man, man->time_to_start_eat, man->time_to_eat))
-			break;
-		usleep(500);
-	}
+	philo_wait(man, man->time_to_start_eat, man->time_to_eat);
 	++man->eat_count;
 	if (man->eat_count == man->num_of_times_each_philo_must_eat)
 	{
@@ -83,24 +59,19 @@ void	philo_eat_spaghetti(t_man *man)
 
 void	philo_sleep(t_man *man)
 {
-	long long time_to_start_sleep;
+	long long	time_to_start_sleep;
 
 	pthread_mutex_lock(man->died);
 	time_to_start_sleep = what_time();
 	if (*man->is_alive)
 		printf("%lld %d %s\n", time_to_start_sleep, man->id, SLEEP);
 	pthread_mutex_unlock(man->died);
-	while (*man->is_alive)
-	{
-		if (waiting_time(man, time_to_start_sleep, man->time_to_sleep))
-			break;
-		usleep(500);
-	}
+	philo_wait(man, time_to_start_sleep, man->time_to_sleep);
 }
 
-void *lunch(void *p)
+void	*lunch(void *p)
 {
-	t_man *man;
+	t_man	*man;
 
 	man = p;
 	man->time_to_start_eat = what_time();
@@ -112,17 +83,6 @@ void *lunch(void *p)
 		philo_print_status(man, THINK);
 	}
 	return (NULL);
-}
-
-void	only_one_philo(t_man *man)
-{
-	philo_print_status(man, TAKEFORK);
-	man->time_to_start_eat = what_time();
-	while (*man->is_alive)
-	{
-		if (waiting_time(man, man->time_to_start_eat, man->time_to_die))
-			break;
-	}
 }
 
 void	philo_lunch(t_philo *philo)

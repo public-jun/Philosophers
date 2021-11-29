@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 23:03:51 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 18:14:14 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:59:55 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	destroy_philo(t_philo *philo)
 {
-	int i;
+	int	i;
 
 	pthread_mutex_destroy(&philo->died);
 	i = 0;
