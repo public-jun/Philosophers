@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 23:00:59 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/28 18:14:49 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 23:22:17 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ t_result	err_philo_init_fork(t_philo *philo, int last_index, char *msg)
 		pthread_mutex_destroy(&philo->fork[i]);
 		++i;
 	}
+	if (last_index > 0)
+		free(philo->fork);
+	free(philo->men);
+	ft_err(msg);
+	return (FAILURE);
+}
+
+static t_result	err_philo_init_died(t_philo *philo, const char *msg)
+{
+	free(philo->men);
 	ft_err(msg);
 	return (FAILURE);
 }
@@ -34,7 +44,7 @@ t_result	philo_init_fork(t_philo *philo)
 
 	total_philo = philo->num_philo_and_fork;
 	if (pthread_mutex_init(&philo->died, NULL))
-		return (ft_err(ERRINITMUTEX));
+		return (err_philo_init_died(philo, ERRINITMUTEX));
 	philo->fork = \
 		(pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * total_philo);
 	if (!philo->fork)
