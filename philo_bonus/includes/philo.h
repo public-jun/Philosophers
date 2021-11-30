@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 19:59:37 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 22:59:56 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <semaphore.h>
+
 
 typedef enum e_result
 {
@@ -36,16 +40,14 @@ typedef struct s_man
 	int				time_to_sleep;
 	int				num_of_times_each_philo_must_eat;
 	bool			is_must_eat;
+
+	// philo status
 	int				id;
-	pthread_mutex_t	*left;
-	pthread_mutex_t	*right;
+	sem_t			*fork;
 	int				eat_count;
 	long long		time_to_start_eat;
-	pthread_t		thread;
-	pthread_mutex_t	*died;
-	bool			*is_alive;
-	pthread_mutex_t	*eat;
-	int				*least_philo_ate_count;
+	sem_t			*died;
+	// sem_t			*eat;
 }	t_man;
 
 typedef struct s_philo
@@ -56,12 +58,15 @@ typedef struct s_philo
 	int				time_to_sleep;
 	int				num_of_times_each_philo_must_eat;
 	bool			is_must_eat;
-	pthread_mutex_t	eat;
+
+	// pthread_mutex_t	eat;
 	int				least_philo_ate_count;
 	t_man			*men;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	died;
-	bool			is_alive;
+	pid_t			pids[PIDMAX];
+	sem_t			*fork; // == num philo
+	// sem_t			*died; // == 1
+	// sem_t			*eat;
+	// bool			is_alive;
 }	t_philo;
 
 t_result	init_args(int ac, char **av, t_philo *philo);
@@ -69,7 +74,6 @@ t_result	init_args(int ac, char **av, t_philo *philo);
 /*
 ** free_all.c
 */
-void		destroy_philo(t_philo *philo);
 int			free_all(t_philo *philo);
 
 /*

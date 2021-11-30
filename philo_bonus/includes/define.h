@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 16:12:09 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 22:45:02 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define MUSTEATMAX 1000
 # define RIGHT 1
 # define LEFT 2
+# define PIDMAX 201
 # define INVALIDARGS "Invalid argment"
 # define CANTALLOCATE "Cannot malloc"
 # define ERRINITMUTEX "Cant init mutex"

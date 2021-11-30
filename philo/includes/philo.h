@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 19:59:37 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:16:31 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void		philo_die(t_man *man);
 ** time.c
 */
 long long	what_time(void);
+bool		is_die(t_man *man, long long now);
 int			waiting(t_man *man, long long standard, int work);
 
 /*
