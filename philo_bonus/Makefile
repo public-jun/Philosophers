@@ -7,17 +7,17 @@ INCLUDE := -I includes/
 
 SRCDIR := srcs/
 SRCNAME := main.c \
-			free_all.c \
+			init_args.c \
 			ft_atoi.c \
 			ft_err.c \
-			init_args.c \
-			philo_init_eat.c \
-			philo_init_man.c \
-			philo_init_fork.c \
-			philo_lunch.c \
-			philo_utils.c \
-			time.c \
 			utils.c \
+			philo_init_man.c \
+			free_all.c \
+			# philo_init_eat.c \
+			# philo_init_fork.c \
+			# philo_lunch.c \
+			# philo_utils.c \
+			# time.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)

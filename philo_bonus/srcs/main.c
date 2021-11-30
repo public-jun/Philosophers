@@ -6,11 +6,23 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 16:00:32 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 23:00:25 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+static void	init_pids(t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < PIDMAX)
+	{
+		philo->pids[i] = -1;
+		++i;
+	}
+}
 
 static void	init_philo(t_philo *philo)
 {
@@ -23,7 +35,7 @@ static void	init_philo(t_philo *philo)
 	philo->least_philo_ate_count = 0;
 	philo->men = NULL;
 	philo->fork = NULL;
-	philo->is_alive = true;
+	init_pids(philo);
 }
 
 int	main(int ac, char **av)
@@ -35,12 +47,11 @@ int	main(int ac, char **av)
 		return (ft_err(INVALIDARGS));
 	if (philo_init_man(&philo))
 		return (EXIT_FAILURE);
-	if (philo_init_fork(&philo))
-		return (EXIT_FAILURE);
-	if (philo_init_eat(&philo))
-		return (EXIT_FAILURE);
-	philo_lunch(&philo);
-	destroy_philo(&philo);
+	// if (philo_init_fork(&philo))
+	// 	return (EXIT_FAILURE);
+	// if (philo_init_eat(&philo))
+	// 	return (EXIT_FAILURE);
+	// philo_lunch(&philo);
 	free_all(&philo);
 	return (0);
 }
