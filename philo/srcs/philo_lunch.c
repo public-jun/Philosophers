@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 20:00:33 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:16:41 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	philo_take_fork(t_man *man)
 
 void	philo_eat_spaghetti(t_man *man)
 {
+	is_die(man, what_time());
 	pthread_mutex_lock(man->died);
 	man->time_to_start_eat = what_time();
 	if (*man->is_alive)
@@ -41,7 +42,8 @@ void	philo_eat_spaghetti(t_man *man)
 	pthread_mutex_unlock(man->died);
 	philo_wait(man, man->time_to_start_eat, man->time_to_eat);
 	++man->eat_count;
-	if (man->eat_count == man->num_of_times_each_philo_must_eat)
+	if (*man->is_alive
+		&& man->eat_count == man->num_of_times_each_philo_must_eat)
 	{
 		pthread_mutex_lock(man->eat);
 		++*man->least_philo_ate_count;
