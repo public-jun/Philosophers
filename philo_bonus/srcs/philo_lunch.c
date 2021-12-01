@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/01 21:59:59 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:02:12 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,23 @@ void	philo_eat_spaghetti(t_man *man)
 	printf("%lld %d %s\n", man->time_to_start_eat, man->id, EAT);
 	sem_post(man->died);
 	philo_wait(man, man->time_to_start_eat, man->time_to_eat);
-	// ++man->eat_count;
-	// if (man->eat_count == man->num_of_times_each_philo_must_eat)
-	// {
-	// 	pthread_mutex_lock(man->eat);
-	// 	++*man->least_philo_ate_count;
-	// 	if (*man->least_philo_ate_count == man->num_philo_and_fork)
-	// 	{
-	// 		pthread_mutex_lock(man->died);
-	// 		*man->is_alive = false;
-	// 		pthread_mutex_unlock(man->died);
-	// 	}
-	// 	pthread_mutex_unlock(man->eat);
-	// }
+	++man->eat_count;
+	if (man->eat_count == man->num_of_times_each_philo_must_eat)
+		sem_post(man->eat);
 	sem_post(man->fork);
 	sem_post(man->fork);
 }
 
-// void	philo_sleep(t_man *man)
-// {
-// 	long long	time_to_start_sleep;
+void	philo_sleep(t_man *man)
+{
+	long long	time_to_start_sleep;
 
-// 	pthread_mutex_lock(man->died);
-// 	time_to_start_sleep = what_time();
-// 	if (*man->is_alive)
-// 		printf("%lld %d %s\n", time_to_start_sleep, man->id, SLEEP);
-// 	pthread_mutex_unlock(man->died);
-// 	philo_wait(man, time_to_start_sleep, man->time_to_sleep);
-// }
+	sem_wait(man->died);
+	time_to_start_sleep = what_time();
+	printf("%lld %d %s\n", time_to_start_sleep, man->id, SLEEP);
+	sem_post(man->died);
+	philo_wait(man, time_to_start_sleep, man->time_to_sleep);
+}
 
 void	*lunch(void *p)
 {
@@ -69,10 +58,9 @@ void	*lunch(void *p)
 	{
 		philo_take_fork(man);
 		philo_eat_spaghetti(man);
-		// philo_sleep(man);
-		// philo_print_status(man, THINK);
+		philo_sleep(man);
+		philo_print_status(man, THINK);
 	}
-	exit(0);
 }
 
 pid_t	philo_take_seat(t_man *man)
@@ -108,6 +96,19 @@ t_result	err_philo_take_seat(t_philo *philo, int last)
 	return (FAILURE);
 }
 
+void	kill_all_philo(t_philo *philo, pid_t except)
+{
+	int	i;
+
+	i = 0;
+	while (i < philo->num_philo_and_fork)
+	{
+		if (except != philo->pids[i])
+			kill(philo->pids[i], SIGKILL);
+		++i;
+	}
+}
+
 void	wait_die(t_philo *philo)
 {
 	pid_t	die_pid;
@@ -116,15 +117,45 @@ void	wait_die(t_philo *philo)
 
 	i = -1;
 	die_pid = waitpid(-1, &status, 0);
-	// dieで誰かが死んだ場合
-	if (WIFEXITED(status) && WEXITSTATUS(status) == 1)
+	if (philo->is_must_eat && WIFEXITED(status) && WEXITSTATUS(status) == 2)
+		kill_all_philo(philo, -1);
+	else if (WIFEXITED(status) && WEXITSTATUS(status) == 1)
 	{
-		while (++i < philo->num_philo_and_fork)
+		kill_all_philo(philo, die_pid);
+		if (philo->is_must_eat)
+			kill(philo->eat_count_pid, SIGKILL);
+	}
+}
+
+
+void	count_philo_must_ate_monitor(t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (true)
+	{
+		sem_wait(philo->eat);
+		++i;
+		if (i == philo->num_philo_and_fork)
 		{
-			if (die_pid != philo->pids[i])
-				kill(philo->pids[i], SIGKILL);
+			sem_wait(philo->died);
+			kill_all_philo(philo, -1);
+			exit(1);
 		}
 	}
+}
+
+pid_t	create_eat_count_watcher(t_philo *philo)
+{
+	pid_t	c_pid;
+
+	c_pid = fork();
+	if (c_pid == -1)
+		return (c_pid);
+	else if (c_pid == 0)
+		count_philo_must_ate_monitor(philo);
+	return (c_pid);
 }
 
 
@@ -140,9 +171,11 @@ t_result	philo_lunch(t_philo *philo)
 		if (philo->pids[i] == -1)
 			return(err_philo_take_seat(philo, i));
 	}
-	// least must eat count watcher
-	// wait die
+	if (philo->is_must_eat)
+		philo->eat_count_pid = create_eat_count_watcher(philo);
 	wait_die(philo);
 	sem_close(philo->fork);
+	sem_close(philo->died);
+	sem_close(philo->eat);
 	return (SUCCESS);
 }

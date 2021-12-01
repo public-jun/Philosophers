@@ -17,7 +17,6 @@ SRCNAME := main.c \
 			philo_lunch.c \
 			time.c \
 			philo_utils.c \
-			# philo_init_eat.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)
