@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/30 22:59:56 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:58:21 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <signal.h>
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <semaphore.h>
@@ -44,6 +45,7 @@ typedef struct s_man
 	// philo status
 	int				id;
 	sem_t			*fork;
+	sem_t			*taking;
 	int				eat_count;
 	long long		time_to_start_eat;
 	sem_t			*died;
@@ -98,15 +100,14 @@ t_result	philo_init_eat(t_philo *philo);
 t_result	philo_init_man(t_philo *philo);
 
 /*
-** philo_init_fork.c
+** philo_init_sem.c
 */
-t_result	err_philo_init_fork(t_philo *philo, int last_index, char *msg);
-t_result	philo_init_fork(t_philo *philo);
+t_result	philo_init_sem(t_philo *philo);
 
 /*
 ** philo_lunch.c
 */
-void		philo_lunch(t_philo *philo);
+t_result	philo_lunch(t_philo *philo);
 
 /*
 ** philo_utils.c
@@ -121,6 +122,7 @@ void		philo_die(t_man *man);
 */
 long long	what_time(void);
 int			waiting(t_man *man, long long standard, int work);
+bool		is_die(t_man *man, long long now);
 
 /*
 ** utils.c
