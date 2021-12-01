@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/01 21:57:26 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 00:01:59 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_man(t_man *man)
 	man->fork = NULL;
 	man->taking = NULL;
 	man->died = NULL;
+	man->eat = NULL;
 }
 
 t_result	philo_init_man(t_philo *philo)

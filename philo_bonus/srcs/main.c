@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/01 11:02:35 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 00:57:52 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	init_pids(t_philo *philo)
 		philo->pids[i] = -1;
 		++i;
 	}
+	philo->eat_count_pid = -1;
 }
 
 static void	init_philo(t_philo *philo)
@@ -32,9 +33,10 @@ static void	init_philo(t_philo *philo)
 	philo->time_to_sleep = 0;
 	philo->num_of_times_each_philo_must_eat = 0;
 	philo->is_must_eat = false;
-	philo->least_philo_ate_count = 0;
 	philo->men = NULL;
 	philo->fork = NULL;
+	philo->died = NULL;
+	philo->eat = NULL;
 	init_pids(philo);
 }
 
@@ -49,8 +51,6 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	if (philo_init_sem(&philo))
 		return (EXIT_FAILURE);
-	// if (philo_init_eat(&philo))
-	// 	return (EXIT_FAILURE);
 	if (philo_lunch(&philo))
 		return (EXIT_FAILURE);
 	free_all(&philo);

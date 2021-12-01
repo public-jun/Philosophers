@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/01 21:58:21 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:07:07 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_man
 	int				eat_count;
 	long long		time_to_start_eat;
 	sem_t			*died;
-	// sem_t			*eat;
+	sem_t			*eat;
 }	t_man;
 
 typedef struct s_philo
@@ -62,13 +62,12 @@ typedef struct s_philo
 	bool			is_must_eat;
 
 	// pthread_mutex_t	eat;
-	int				least_philo_ate_count;
 	t_man			*men;
 	pid_t			pids[PIDMAX];
-	sem_t			*fork; // == num philo
-	// sem_t			*died; // == 1
-	// sem_t			*eat;
-	// bool			is_alive;
+	pid_t			eat_count_pid;
+	sem_t			*fork;
+	sem_t			*died;
+	sem_t			*eat;
 }	t_philo;
 
 t_result	init_args(int ac, char **av, t_philo *philo);
