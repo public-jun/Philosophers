@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:08:12 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/29 20:01:12 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:46:32 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ bool	is_die(t_man *man, long long now)
 {
 	if (now - man->time_to_start_eat >= man->time_to_die)
 	{
-		philo_die(man);
-		return (true);
+		sem_wait(man->died);
+		printf("%lld %d %s\n", what_time(), man->id, DIE);
+		exit(1);
+		// philo_die(man);
+		// return (true);
 	}
 	return (false);
 }
