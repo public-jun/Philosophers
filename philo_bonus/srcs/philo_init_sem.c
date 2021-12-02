@@ -6,13 +6,13 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 23:00:59 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 14:46:57 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:05:00 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-t_result	new_semaphore(sem_t **dst, const char *name, int value)
+static t_result	new_semaphore(sem_t **dst, const char *name, int value)
 {
 	sem_unlink(name);
 	*dst = sem_open(name, O_CREAT, 0600, value);
@@ -32,7 +32,7 @@ void	close_philo_sem(t_philo *philo)
 		sem_close(philo->eat);
 }
 
-t_result	err_philo_init_sem(t_philo *philo)
+static t_result	err_philo_init_sem(t_philo *philo)
 {
 	close_philo_sem(philo);
 	free_all(philo);
@@ -42,7 +42,7 @@ t_result	err_philo_init_sem(t_philo *philo)
 
 t_result	philo_init_sem(t_philo *philo)
 {
-	int	total_philo;
+	int		total_philo;
 	sem_t	*taking;
 	int		i;
 
@@ -52,7 +52,7 @@ t_result	philo_init_sem(t_philo *philo)
 		|| new_semaphore(&philo->eat, "/eat", 0)
 		|| new_semaphore(&philo->died, "/died", 1)
 		|| new_semaphore(&taking, "/taking", 1))
-			return (err_philo_init_sem(philo));
+		return (err_philo_init_sem(philo));
 	i = -1;
 	while (++i < total_philo)
 	{

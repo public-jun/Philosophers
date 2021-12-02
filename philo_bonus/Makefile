@@ -11,12 +11,14 @@ SRCNAME := main.c \
 			ft_atoi.c \
 			ft_err.c \
 			init_args.c \
+			lunch.c \
 			philo_init_man.c \
 			philo_init_sem.c \
-			philo_lunch.c \
 			philo_utils.c \
+			take_seat.c \
 			time.c \
 			utils.c \
+			watcher.c \
 
 SRCS := $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS := $(SRCS:.c=.o)
