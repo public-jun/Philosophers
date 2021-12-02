@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:43:54 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 20:05:38 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:12:40 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ void	count_philo_must_ate_monitor(t_philo *philo)
 	}
 }
 
-pid_t	create_eat_count_watcher(t_philo *philo)
+t_result	create_eat_count_watcher(t_philo *philo)
 {
 	pid_t	c_pid;
 
 	c_pid = fork();
 	if (c_pid < 0)
-		return (c_pid);
+		return (FAILURE);
 	else if (c_pid == 0)
 		count_philo_must_ate_monitor(philo);
-	return (c_pid);
+	philo->eat_count_pid = c_pid;
+	return (SUCCESS);
 }
 
 void	wait_die(t_philo *philo)

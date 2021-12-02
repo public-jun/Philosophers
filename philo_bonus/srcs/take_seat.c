@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:52:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 20:05:21 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 21:29:50 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ static void	kill_zombie(t_philo *philo, int last)
 
 static t_result	err_philo_take_seat(t_philo *philo, int last)
 {
-	printf("errr philo take seat\n");
 	kill_zombie(philo, last);
+	while (waitpid(-1, NULL, 0) > 0)
+		;
+	close_philo_sem(philo);
+	free_all(philo);
 	ft_err(ERRFORK);
 	return (FAILURE);
 }
@@ -65,7 +68,8 @@ t_result	philo_lunch(t_philo *philo)
 			return (err_philo_take_seat(philo, i));
 	}
 	if (philo->is_must_eat)
-		philo->eat_count_pid = create_eat_count_watcher(philo);
+		if (create_eat_count_watcher(philo))
+			return (err_philo_take_seat(philo, philo->num_philo_and_fork));
 	wait_die(philo);
 	close_philo_sem(philo);
 	return (SUCCESS);
