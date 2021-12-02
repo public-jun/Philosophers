@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 01:07:07 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:17:05 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ typedef struct s_man
 
 	// philo status
 	int				id;
-	sem_t			*fork;
-	sem_t			*taking;
 	int				eat_count;
 	long long		time_to_start_eat;
+	sem_t			*fork;
+	sem_t			*taking;
 	sem_t			*died;
 	sem_t			*eat;
 }	t_man;
