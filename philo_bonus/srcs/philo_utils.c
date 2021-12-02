@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 19:55:45 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 01:05:35 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:23:52 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,3 @@ void	philo_wait(t_man *man, long long standard, int wait_time)
 		usleep(500);
 	}
 }
-
-// void	philo_die(t_man *man)
-// {
-// 	sem_wait(man->died);
-// 	printf("%lld %d %s\n", what_time(), man->id, DIE);
-// 	exit(1);
-// }
