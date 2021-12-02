@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 13:17:05 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:56:59 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_result	philo_init_man(t_philo *philo);
 /*
 ** philo_init_sem.c
 */
+void		close_philo_sem(t_philo *philo);
 t_result	philo_init_sem(t_philo *philo);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 01:02:12 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:12:15 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,10 @@ void	kill_zombie(t_philo *philo, int last)
 
 t_result	err_philo_take_seat(t_philo *philo, int last)
 {
+	printf("errr philo take seat\n");
 	kill_zombie(philo, last);
-	sem_close(philo->fork);
+	close_philo_sem(philo);
+	// sem_close(philo->fork);
 	free_set((void **)philo->men, NULL);
 	ft_err(ERRFORK);
 	return (FAILURE);
@@ -151,7 +153,7 @@ pid_t	create_eat_count_watcher(t_philo *philo)
 	pid_t	c_pid;
 
 	c_pid = fork();
-	if (c_pid == -1)
+	if (c_pid < 0)
 		return (c_pid);
 	else if (c_pid == 0)
 		count_philo_must_ate_monitor(philo);
@@ -165,6 +167,7 @@ t_result	philo_lunch(t_philo *philo)
 
 	i = -1;
 	// 哲学者が一人の時
+	printf("create philo\n");
 	while (++i < philo->num_philo_and_fork)
 	{
 		philo->pids[i] = philo_take_seat(&philo->men[i]);
@@ -174,8 +177,6 @@ t_result	philo_lunch(t_philo *philo)
 	if (philo->is_must_eat)
 		philo->eat_count_pid = create_eat_count_watcher(philo);
 	wait_die(philo);
-	sem_close(philo->fork);
-	sem_close(philo->died);
-	sem_close(philo->eat);
+	close_philo_sem(philo);
 	return (SUCCESS);
 }
