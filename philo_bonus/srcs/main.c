@@ -6,11 +6,11 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 17:48:35 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 00:57:52 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:32:57 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+#include "../includes/philo.h"
 
 static void	init_pids(t_philo *philo)
 {
@@ -34,10 +34,10 @@ static void	init_philo(t_philo *philo)
 	philo->num_of_times_each_philo_must_eat = 0;
 	philo->is_must_eat = false;
 	philo->men = NULL;
+	init_pids(philo);
 	philo->fork = NULL;
 	philo->died = NULL;
 	philo->eat = NULL;
-	init_pids(philo);
 }
 
 int	main(int ac, char **av)

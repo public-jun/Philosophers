@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:14:46 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/01 11:03:45 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:46:39 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define CANTALLOCATE "Cannot malloc"
 # define ERRINITMUTEX "Cant init mutex"
 # define ERRFORK "Failed to fork"
+# define ERRSEM "Failed to sem open"
 # define TAKEFORK "has taken a fork"
 # define EAT "is eating"
 # define SLEEP "is sleeping"
