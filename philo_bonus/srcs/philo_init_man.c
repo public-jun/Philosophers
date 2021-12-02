@@ -6,13 +6,13 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 00:01:59 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:58:52 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	init_man(t_man *man)
+static void	init_man(t_man *man)
 {
 	man->num_philo_and_fork = 0;
 	man->time_to_die = 0;
