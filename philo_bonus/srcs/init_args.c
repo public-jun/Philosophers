@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 16:54:33 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/27 18:14:44 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:58:11 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_result	set_philo_para(int *item, char *arg)
 	return (SUCCESS);
 }
 
-bool	is_in_range(int value, int min, int max)
+static bool	is_in_range(int value, int min, int max)
 {
 	if (min <= value && value <= max)
 		return (true);
@@ -33,7 +33,7 @@ bool	is_in_range(int value, int min, int max)
 		return (false);
 }
 
-t_result	check_valid_philo_para(t_philo *philo)
+static t_result	check_valid_philo_para(t_philo *philo)
 {
 	if (!is_in_range(philo->num_philo_and_fork, PHILOMIN, PHILOMAX)
 		|| !is_in_range(philo->time_to_die, MSECMIN, MSECMAX)
