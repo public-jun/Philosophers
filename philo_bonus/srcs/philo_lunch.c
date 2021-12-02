@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 15:30:47 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:23:47 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,15 @@ void	*lunch(void *p)
 	}
 }
 
-pid_t	philo_take_seat(t_man *man)
+void	lunch_alone(t_man *man)
+{
+	man->time_to_start_eat = what_time();
+	sem_wait(man->fork);
+	philo_print_status(man, TAKEFORK);
+	philo_wait(man, man->time_to_start_eat, man->time_to_die);
+}
+
+pid_t	philo_take_seat(t_man *man, bool is_alone)
 {
 	pid_t	c_pid;
 
@@ -71,7 +79,12 @@ pid_t	philo_take_seat(t_man *man)
 	if (c_pid == -1)
 		return (c_pid);
 	else if (c_pid == 0)
-		lunch(man);
+	{
+		if (is_alone)
+			lunch_alone(man);
+		else
+			lunch(man);
+	}
 	return (c_pid);
 }
 
@@ -157,17 +170,18 @@ pid_t	create_eat_count_watcher(t_philo *philo)
 	return (c_pid);
 }
 
-
 t_result	philo_lunch(t_philo *philo)
 {
-	int	i;
+	int		i;
+	bool	is_alone;
 
 	i = -1;
-	// 哲学者が一人の時
-	printf("create philo\n");
+	is_alone = false;
+	if (philo->num_philo_and_fork == 1)
+		is_alone = true;
 	while (++i < philo->num_philo_and_fork)
 	{
-		philo->pids[i] = philo_take_seat(&philo->men[i]);
+		philo->pids[i] = philo_take_seat(&philo->men[i], is_alone);
 		if (philo->pids[i] == -1)
 			return(err_philo_take_seat(philo, i));
 	}
