@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 15:12:15 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:30:47 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ t_result	err_philo_take_seat(t_philo *philo, int last)
 {
 	printf("errr philo take seat\n");
 	kill_zombie(philo, last);
-	close_philo_sem(philo);
-	// sem_close(philo->fork);
-	free_set((void **)philo->men, NULL);
 	ft_err(ERRFORK);
 	return (FAILURE);
 }
