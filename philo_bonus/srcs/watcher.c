@@ -6,11 +6,26 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:43:54 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 20:12:40 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:36:00 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+void	*dead_monitor(void *p)
+{
+	t_man	*man;
+
+	man = (t_man *)p;
+	pthread_detach(man->dead_monitor);
+	man->is_get_fork = false;
+	while (!man->is_get_fork)
+	{
+		is_die(man, what_time());
+		usleep(300);
+	}
+	return (NULL);
+}
 
 void	count_philo_must_ate_monitor(t_philo *philo)
 {
