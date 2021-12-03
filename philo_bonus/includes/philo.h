@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 20:12:51 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:35:46 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_man
 	int				id;
 	int				eat_count;
 	long long		time_to_start_eat;
+	bool			is_get_fork;
+	pthread_t		dead_monitor;
 	sem_t			*fork;
 	sem_t			*taking;
 	sem_t			*died;
@@ -133,6 +135,7 @@ void		free_set(void **dst, void *src);
 /*
 ** watcher.c
 */
+void		*dead_monitor(void *p);
 void		count_philo_must_ate_monitor(t_philo *philo);
 t_result	create_eat_count_watcher(t_philo *philo);
 void		wait_die(t_philo *philo);

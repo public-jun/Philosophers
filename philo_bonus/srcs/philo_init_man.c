@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 21:50:05 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 19:58:52 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:24:33 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	init_man(t_man *man)
 	man->id = 0;
 	man->eat_count = 0;
 	man->time_to_start_eat = 0;
+	man->is_get_fork = false;
 	man->fork = NULL;
 	man->taking = NULL;
 	man->died = NULL;

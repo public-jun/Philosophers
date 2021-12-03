@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 20:01:16 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:35:36 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	philo_take_fork(t_man *man)
 {
 	sem_wait(man->taking);
+	pthread_create(&man->dead_monitor, NULL, dead_monitor, man);
 	sem_wait(man->fork);
 	philo_print_status(man, TAKEFORK);
 	sem_wait(man->fork);
+	man->is_get_fork = true;
 	philo_print_status(man, TAKEFORK);
 	sem_post(man->taking);
 }
