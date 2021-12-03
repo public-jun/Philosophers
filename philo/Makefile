@@ -11,6 +11,7 @@ SRCNAME := main.c \
 			ft_atoi.c \
 			ft_err.c \
 			init_args.c \
+			monitor.c \
 			philo_init_eat.c \
 			philo_init_man.c \
 			philo_init_fork.c \
