@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/30 15:16:31 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/03 22:47:45 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_philo
 	bool			is_must_eat;
 	pthread_mutex_t	eat;
 	int				least_philo_ate_count;
+	pthread_t		th_monitor;
 	t_man			*men;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	died;
@@ -81,7 +82,11 @@ int			*ft_atoi(const char *str);
 ** ft_err.c
 */
 t_result	ft_err(const char *msg);
-// int			ft_err_and_free(t_philo *philo, const char *msg);
+
+/*
+** monitor.c
+*/
+void		*monitor(void *p);
 
 /*
 ** philo_init_eat.c
