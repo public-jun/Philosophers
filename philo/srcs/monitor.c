@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 22:46:22 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/03 22:46:48 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:25:37 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	*monitor(void *p)
 	long long	now;
 
 	philo = (t_philo *)p;
+	pthread_detach(philo->th_monitor);
 	men = philo->men;
 	i = -1;
 	while (philo->is_alive)
