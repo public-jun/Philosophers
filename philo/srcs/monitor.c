@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 22:46:22 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 15:25:37 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/05 20:05:13 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ void	*monitor(void *p)
 	philo = (t_philo *)p;
 	pthread_detach(philo->th_monitor);
 	men = philo->men;
-	i = -1;
 	while (philo->is_alive)
 	{
-		while (++i < philo->num_of_times_each_philo_must_eat)
+		i = -1;
+		while (++i < philo->num_philo_and_fork)
 		{
 			now = what_time();
 			is_die(&men[i], now);
 		}
-		i = -1;
 	}
 	return (NULL);
 }
