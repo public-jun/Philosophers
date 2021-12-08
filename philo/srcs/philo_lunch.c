@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 20:17:58 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 15:26:01 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:07:36 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ void	philo_lunch(t_philo *philo)
 	i = -1;
 	if (philo->num_philo_and_fork == 1)
 	{
-		only_one_philo(&philo->men[0]);
+		pthread_create(&philo->men[0].thread, NULL,
+			only_one_philo, &philo->men[0]);
+		pthread_join(philo->men[0].thread, NULL);
 		return ;
 	}
 	while (++i < philo->num_philo_and_fork)

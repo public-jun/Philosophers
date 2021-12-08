@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:35:10 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 00:35:46 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:10:51 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef enum e_result
 	SUCCESS,
 	FAILURE
 }	t_result;
+
+typedef enum s_end
+{
+	ENDDIED = 1,
+	ENDMUSTEAT = 2
+}	t_end;
 
 typedef struct s_man
 {

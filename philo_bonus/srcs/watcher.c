@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:43:54 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 00:36:00 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:14:29 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	count_philo_must_ate_monitor(t_philo *philo)
 		{
 			sem_wait(philo->died);
 			kill_all_philo(philo, -1);
-			exit(1);
+			exit(ENDMUSTEAT);
 		}
 	}
 }
