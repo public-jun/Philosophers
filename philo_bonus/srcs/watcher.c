@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:43:54 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/08 19:14:29 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:28:11 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ void	wait_die(t_philo *philo)
 
 	i = -1;
 	die_pid = waitpid(-1, &status, 0);
-	if (philo->is_must_eat && WIFEXITED(status) && WEXITSTATUS(status) == 2)
+	if (philo->is_must_eat && WIFEXITED(status)
+		&& WEXITSTATUS(status) == ENDMUSTEAT)
 		kill_all_philo(philo, -1);
-	else if (WIFEXITED(status) && WEXITSTATUS(status) == 1)
+	else if (WIFEXITED(status) && WEXITSTATUS(status) == ENDDIED)
 	{
 		kill_all_philo(philo, die_pid);
 		if (philo->is_must_eat)
