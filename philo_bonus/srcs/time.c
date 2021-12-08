@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:08:12 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/02 01:06:39 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:10:43 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	is_die(t_man *man, long long now)
 	{
 		sem_wait(man->died);
 		printf("%lld %d %s\n", what_time(), man->id, DIE);
-		exit(1);
+		exit(ENDDIED);
 	}
 	return (false);
 }
